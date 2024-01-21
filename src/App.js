@@ -24,6 +24,7 @@ function App() {
       <div key={item.id} className='item-container'>
         <h2>{item.title}</h2>
         <p>{item.body}</p>
+        <p>{item.userId}</p>
         <pre>{JSON.stringify(item, null, 2)}</pre>
       </div>
     ))}
