@@ -12,24 +12,42 @@ function App() {
       .then(json => setItems(json))
   }, [resourceType])
 
-  return (
+return (
     <>
-    <div>
-      <button onClick={() => setResourceType('posts')}>Posts</button>
-      <button onClick={() => setResourceType('users')}>Users</button>
-      <button onClick={() => setResourceType('comments')}>Comments</button>
-    </div>
-    <h1>{resourceType}</h1>
-    {items.map(item => (
-      <div key={item.id} className='item-container'>
-        <h2>{item.title}</h2>
-        <p>{item.body}</p>
-        <p>{item.userId}</p>
-        <pre>{JSON.stringify(item, null, 2)}</pre>
+      <div className='button-container'>
+        <button onClick={() => setResourceType('posts')}>Posts</button>
+        <button onClick={() => setResourceType('users')}>Users</button>
+        <button onClick={() => setResourceType('comments')}>Comments</button>
       </div>
-    ))}
+      <h1>{resourceType}</h1>
+      {items.map(item => (
+        <div
+          key={item.id}
+          className={`item-container ${
+            resourceType === 'posts'
+              ? 'post-container'
+              : resourceType === 'users'
+              ? 'user-container'
+              : 'comment-container'
+          }`}
+        >
+          <h2>{item.title || item.name}</h2>
+          <p>{item.body || item.email || item.body}</p>
+          {resourceType === 'users' && (
+            <>
+              <p>{item.phone}</p>
+              <p>{item.website}</p>
+            </>
+          )}
+          {resourceType === 'comments' && <p>{item.body}</p>}
+          <div className="json-container">
+            <pre>{JSON.stringify(item, null, 2)}</pre>
+          </div>
+        </div>
+      ))}
     </>
   );
 }
+
 
 export default App;

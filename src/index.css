@@ -1,5 +1,6 @@
 body {
-  margin: 0;
+  margin: 50px;
+  box-sizing: border-box;
 }
 
 code {
@@ -13,6 +14,45 @@ code {
   margin-bottom: 10px;
 }
 
+.button-container {
+display: flex;
+flex-direction: row;
+gap: 5px;
+
+@media (max-width: 1023px) {
+  flex-direction: column;
+}
+}
+
 button {
   margin-right: 10px;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 13px 23px;
+  border: 1px solid #222222;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: #fff;
+  color: #222222;
+}
+
+button:hover {
+  border-color: #000000;
+  background: #f7f7f7;
+}
+
+.post-container {
+  background-color: #e6f7ff; 
+}
+
+.user-container {
+  background-color: #e6ffe6; 
+}
+
+.comment-container {
+  background-color: #fff2e6;
 }
